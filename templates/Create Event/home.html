@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Initially, hide all form and content containers
+        $(".form-container, .content-container").hide();
+
+        // Handle sidebar menu item clicks
+        $(".sidebar-item").click(function () {
+            // Hide all containers
+            $(".form-container, .content-container").hide();
+
+            // Determine which option was clicked
+            var option = $(this).data("option");
+
+            // Show the corresponding container
+            $("#" + option).show();
+        });
+    });
+</script>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column ">
+                        <li class="nav-item">
+                            <a class="nav-link special-button" data-option="Home" href='#Home'>Home</a>
+                        <li class="nav-item">
+                            <a class="nav-link special-button" href="#create-event">Create a New Event</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link special-button" href="#view-events">View Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link special-button" href="#feedback">Feedback</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link special-button" href="#halls-availability">Halls Availability</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link special-button" href="#list-students">List of Students</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link special-button" href="#social-media">Social Media Posts</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Main content area -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Content for each menu option goes here -->
+                <!-- Add this code within the main content area of your HTML structure -->
+<!-- <div id="createEventForm" class="container">
+    <h2>Create a New Event</h2>
+    <form>
+        <div class="mb-3">
+            <label for="eventName" class="form-label">Name of Event</label>
+            <input type="text" class="form-control" id="eventName" placeholder="Enter event name">
+        </div>
+        <div class="mb-3">
+            <label for="eventDescription" class="form-label">Event Description</label>
+            <textarea class="form-control" id="eventDescription" rows="4" placeholder="Enter event description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="eventHost" class="form-label">Host of Event</label>
+            <input type="text" class="form-control" id="eventHost" placeholder="Enter event host">
+        </div>
+        <div class="mb-3">
+            <label for="numberOfStudents" class="form-label">Number of Students</label>
+            <input type="number" class="form-control" id="numberOfStudents" placeholder="Enter number of students">
+        </div>
+        <div class="mb-3">
+            <label for="eventDate" class="form-label">Date</label>
+            <input type="date" class="form-control" id="eventDate">
+        </div>
+        <div class="mb-3">
+            <label for="eventLocation" class="form-label">Location</label>
+            <input type="text" class="form-control" id="eventLocation" placeholder="Enter event location">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div> -->
+<div class="create-event-section">
+    <h3>Create Event</h3>
+    <form>
+        <input type="text" placeholder="Event Name">
+        
+        <input type="text" placeholder="Host of Event">
+        <input type="number" placeholder="Number of Students">
+        <input type="date" placeholder="Event Date">
+        <input type="text" placeholder="Event Location">
+        <textarea placeholder="Discription of Event"></textarea>
+        <button>Create Event</button>
+    </form>
+</div>
+<div  id="viewEvents" class="container">
+    <h2>View Events</h2>
+    <div class="row">
+        <!-- List of Events -->
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h4>Event 1</h4>
+                    <p>Date: June 10, 2023</p>
+                    <p>Location: Venue A</p>
+                </li>
+                <li class="list-group-item">
+                    <h4>Event 2</h4>
+                    <p>Date: July 15, 2023</p>
+                    <p>Location: Venue B</p>
+                </li>
+                <!-- Add more events as list items -->
+            </ul>
+        </div>
+        
+        <!-- Event Details -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Event Title</h5>
+                    <p class="card-text">Event Description goes here.</p>
+                    <p class="card-text">Hosted by: Host Name</p>
+                    <p class="card-text">Date: Event Date</p>
+                    <p class="card-text">Location: Event Location</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="feedbackForm" class="create-event-section">
+    <h3>Feedback Form</h3>
+    <form>
+        <input type="text" placeholder="Event Name">
+        <input type="text" placeholder="Enter your Name">
+        <input type="text" placeholder="Event your E-Mail">
+        <input type="text" placeholder="Event your feedback ">
+        <button>Submit Feedback</button>
+    </form>
+</div>
+<div id="hallsAvailability" class="container">
+    <h2>Halls Availability</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Hall Name</th>
+                <th scope="col">Capacity</th>
+                <th scope="col">Available Dates</th>
+                <th scope="col">Book Now</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hall A</td>
+                <td>100</td>
+                <td>November 15-20, 2023</td>
+                <td><a href="#" class="btn btn-primary">Book</a></td>
+            </tr>
+            <tr>
+                <td>Hall B</td>
+                <td>150</td>
+                <td>December 5-10, 2023</td>
+                <td><a href="#" class="btn btn-primary">Book</a></td>
+            </tr>
+            <!-- Add more hall availability entries as additional table rows -->
+        </tbody>
+    </table>
+</div>
+<div  id="listStudents" class="container">
+    <h2>List of Students</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Major</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>John Doe</td>
+                <td>johndoe@example.com</td>
+                <td>Computer Science</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Jane Smith</td>
+                <td>janesmith@example.com</td>
+                <td>Engineering</td>
+            </tr>
+            <!-- Add more student entries as additional table rows -->
+        </tbody>
+    </table>
+</div>
+<div id="socialMediaPosts"  class="container">
+    <h2>Social Media Posts</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Post 1</h5>
+                    <p class="card-text">Content of the first social media post.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Post 2</h5>
+                    <p class="card-text">Content of the second social media post.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Post 3</h5>
+                    <p class="card-text">Content of the third social media post.</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
